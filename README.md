@@ -1,5 +1,3 @@
 **Now Playing** on Spotify
 
-<a href="https://now-playing-joshlmao.vercel.app/now-playing?open">
-    <img src="https://now-playing-joshlmao.vercel.app/now-playing" width="256" height="64" alt="Now Playing">
-</a>
+<a href="https://now-playing-profile-nu-eight.vercel.app/now-playing?open"><img src="https://now-playing-profile-nu-eight.vercel.app/now-playing" width="300" height="75" alt="Now Playing"></a>
