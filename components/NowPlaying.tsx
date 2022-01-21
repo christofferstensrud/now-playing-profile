@@ -11,14 +11,7 @@ export interface Props {
   isPlaying: boolean;
 }
 
-export const Player: React.FC<Props> = ({
-  cover,
-  track,
-  artist,
-  progress,
-  duration,
-  isPlaying,
-}) => {
+export const Player: React.FC<Props> = ({ cover, track, artist, progress, duration, isPlaying }) => {
   return (
     <ReadmeImg width="256" height="64">
       <style>
@@ -147,7 +140,7 @@ export const Player: React.FC<Props> = ({
           <Text id="track" weight="bold">
             {`${track ?? ""} `.trim()}
           </Text>
-          <Text id="artist" color={!track ? "gray" : undefined}>
+          <Text id="artist" color={!track ? "gray-light" : undefined}>
             {artist || "Nothing playing..."}
           </Text>
           {track && (
