@@ -21,6 +21,7 @@ export default async function (req: NowRequest, res: NowResponse) {
 
   res.setHeader("Content-Type", "application/json");
   res.setHeader("Cache-Control", "s-maxage=1, stale-while-revalidate");
+  res.setHeader("Referrer-Policy", "no-referrer");
 
   const { duration_ms: duration, name: track } = item;
   const { images = [] } = item.album || {};
