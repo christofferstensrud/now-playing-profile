@@ -7,7 +7,7 @@ import { nowPlaying } from "../utils/spotify";
 export default async function (req: NowRequest, res: NowResponse) {
   const { item = {}, is_playing: isPlaying = false, progress_ms: progress = 0 } = await nowPlaying();
 
-  /*const params = decode(req.url.split("?")[1]) as any;
+  const params = decode(req.url.split("?")[1]) as any;
 
   if (params && typeof params.open !== "undefined") {
     if (item && item.external_urls) {
@@ -19,8 +19,8 @@ export default async function (req: NowRequest, res: NowResponse) {
     return res.status(200).end();
   }
 
-  res.setHeader("Content-Type", "image/svg+xml");
-  res.setHeader("Cache-Control", "s-maxage=1, stale-while-revalidate");*/
+  res.setHeader("Content-Type", "application/json");
+  res.setHeader("Cache-Control", "s-maxage=1, stale-while-revalidate");
 
   const { duration_ms: duration, name: track } = item;
   const { images = [] } = item.album || {};
