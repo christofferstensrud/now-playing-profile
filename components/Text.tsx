@@ -39,7 +39,7 @@ const Text: React.FC<any> = ({
         fontFamily: families[family],
         color: colors[color],
         fontWeight: weights[weight],
-        "-webkit-text-stroke-width": "0.5px",
+        "-webkit-text-stroke-width": "0.2px",
         "-webkit-text-stroke-color": "black",
       }}
       {...props}

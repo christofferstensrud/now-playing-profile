@@ -5,11 +5,7 @@ import { Player } from "../components/NowPlaying";
 import { nowPlaying } from "../utils/spotify";
 
 export default async function (req: NowRequest, res: NowResponse) {
-  const {
-    item = {},
-    is_playing: isPlaying = false,
-    progress_ms: progress = 0,
-  } = await nowPlaying();
+  const { item = {}, is_playing: isPlaying = false, progress_ms: progress = 0 } = await nowPlaying();
 
   const params = decode(req.url.split("?")[1]) as any;
 
@@ -23,8 +19,9 @@ export default async function (req: NowRequest, res: NowResponse) {
     return res.status(200).end();
   }
 
-  res.setHeader("Content-Type", "image/svg+xml");
+  res.setHeader("Content-Type", "application/json");
   res.setHeader("Cache-Control", "s-maxage=1, stale-while-revalidate");
+  res.setHeader("Referrer-Policy", "no-referrer");
 
   const { duration_ms: duration, name: track } = item;
   const { images = [] } = item.album || {};
@@ -37,8 +34,8 @@ export default async function (req: NowRequest, res: NowResponse) {
   }
 
   const artist = (item.artists || []).map(({ name }) => name).join(", ");
-  const text = renderToString(
-    Player({ cover: coverImg, artist, track, isPlaying, progress, duration })
-  );
-  return res.status(200).send(text);
+  //const text = renderToString(Player({ cover: coverImg, artist, track, isPlaying, progress, duration }));
+  const json = JSON.stringify({ cover: coverImg, artist, track, isPlaying, progress, duration });
+  return res.status(200).send(json);
+  //return res.status(200).send(text);
 }
