@@ -5,6 +5,8 @@ import { Player } from '../components/NowPlaying';
 import { nowPlaying } from '../utils/spotify';
 
 export default async function (req: NowRequest, res: NowResponse) {
+  console.log('now-playing');
+  console.log('req.url', req.url);
   const { item = {}, is_playing: isPlaying = false, progress_ms: progress = 0 } = await nowPlaying();
 
   const params = decode(req.url.split('?')[1]) as any;
